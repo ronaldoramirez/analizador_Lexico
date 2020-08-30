@@ -25,7 +25,7 @@ import javax.swing.undo.UndoManager;
  *
  * @author Jonathan
  */
-public class frmNotepad extends javax.swing.JFrame {
+public final class frmNotepad extends javax.swing.JFrame {
 
     protected UndoManager undoManager = new UndoManager();
 
@@ -36,7 +36,8 @@ public class frmNotepad extends javax.swing.JFrame {
     int longitud;
     int row;
     boolean estado = false;
-
+    
+    
     static BufferedReader reader = null;
     static JFileChooser file = new JFileChooser();
     static File fichero;
@@ -51,13 +52,14 @@ public class frmNotepad extends javax.swing.JFrame {
     public frmNotepad() {
         initComponents();
         cargarIcono();
+       
         longitud = 0;
         txaSalida.requestFocus();
-        this.setTitle("Sin título : " + titulo);
+        this.setTitle("Automatas  : " + titulo);
         lblBarraEstado.setVisible(false);
         jSeparator3.setVisible(false);
         deshabilitar();
-        pnlHerramientas.setVisible(false);
+        pnlHerramientas.setVisible(true);
         estado = false;
         System.out.println(estado);
 
@@ -122,18 +124,14 @@ public class frmNotepad extends javax.swing.JFrame {
         lblBarraEstado = new javax.swing.JLabel();
         pnlHerramientas = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        btnNuevo = new javax.swing.JButton();
-        btnAbrir = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnCopiar = new javax.swing.JButton();
-        btnCortar = new javax.swing.JButton();
         btnPegar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        cbEstilo = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
-        cbTamaño = new javax.swing.JComboBox();
-        lblFuente = new javax.swing.JLabel();
-        cbFuente = new javax.swing.JComboBox();
+        btnCortar = new javax.swing.JButton();
+        btnCopiar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnAbrir = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
+        btnAutomata = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnbNuevo = new javax.swing.JMenuItem();
@@ -205,6 +203,7 @@ public class frmNotepad extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bloc de Notas");
+        setBackground(new java.awt.Color(204, 204, 204));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -230,53 +229,11 @@ public class frmNotepad extends javax.swing.JFrame {
 
         lblBarraEstado.setText("Lineas : 1 , Columnas : 1");
 
+        pnlHerramientas.setBackground(new java.awt.Color(255, 255, 255));
         pnlHerramientas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlHerramientas.setForeground(new java.awt.Color(204, 204, 204));
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 6));
-
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tp_new.png"))); // NOI18N
-        btnNuevo.setToolTipText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnNuevo);
-
-        btnAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tp_open.png"))); // NOI18N
-        btnAbrir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbrirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAbrir);
-
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tp_save.png"))); // NOI18N
-        btnGuardar.setToolTipText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnGuardar);
-
-        btnCopiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tp_copy.png"))); // NOI18N
-        btnCopiar.setToolTipText("Copiar");
-        btnCopiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCopiarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCopiar);
-
-        btnCortar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tp_cut.png"))); // NOI18N
-        btnCortar.setToolTipText("Cortar");
-        btnCortar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCortarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCortar);
 
         btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tp_paste.png"))); // NOI18N
         btnPegar.setToolTipText("Pegar");
@@ -285,75 +242,112 @@ public class frmNotepad extends javax.swing.JFrame {
                 btnPegarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPegar);
 
-        jLabel3.setText("Estilo");
-
-        cbEstilo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Negrita", "Italic", "Negrita Italic" }));
-        cbEstilo.addActionListener(new java.awt.event.ActionListener() {
+        btnCortar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tp_cut.png"))); // NOI18N
+        btnCortar.setToolTipText("Cortar");
+        btnCortar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbEstiloActionPerformed(evt);
+                btnCortarActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Tamaño");
-
-        cbTamaño.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28", "36", "28", "72" }));
-        cbTamaño.setSelectedIndex(4);
-        cbTamaño.addActionListener(new java.awt.event.ActionListener() {
+        btnCopiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/contenido.png"))); // NOI18N
+        btnCopiar.setToolTipText("Copiar");
+        btnCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbTamañoActionPerformed(evt);
+                btnCopiarActionPerformed(evt);
             }
         });
 
-        lblFuente.setText("Fuente");
-
-        cbFuente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monospaced", "Arial", "Arial Black", "Garamond", "Comic sans MS", "Times New Roman" }));
-        cbFuente.setSelectedIndex(1);
-        cbFuente.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/salvar.png"))); // NOI18N
+        btnGuardar.setToolTipText("Guardar");
+        btnGuardar.setMaximumSize(new java.awt.Dimension(65, 41));
+        btnGuardar.setMinimumSize(new java.awt.Dimension(65, 41));
+        btnGuardar.setPreferredSize(new java.awt.Dimension(65, 41));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbFuenteActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
+
+        btnAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/carpeta.png"))); // NOI18N
+        btnAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirActionPerformed(evt);
+            }
+        });
+
+        btnNuevo.setForeground(new java.awt.Color(102, 102, 102));
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tp_new.png"))); // NOI18N
+        btnNuevo.setToolTipText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+
+        btnAutomata.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tecnologia (1).png"))); // NOI18N
+        btnAutomata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAutomataActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/computacion-en-la-nube.png"))); // NOI18N
+        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout pnlHerramientasLayout = new javax.swing.GroupLayout(pnlHerramientas);
         pnlHerramientas.setLayout(pnlHerramientasLayout);
         pnlHerramientasLayout.setHorizontalGroup(
             pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHerramientasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAutomata, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblFuente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnNuevo)
+                .addGap(18, 18, 18)
+                .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCopiar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCortar)
+                .addGap(18, 18, 18)
+                .addComponent(btnPegar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlHerramientasLayout.setVerticalGroup(
             pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHerramientasLayout.createSequentialGroup()
-                .addGroup(pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblFuente)
-                        .addComponent(cbFuente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)
-                        .addComponent(cbTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addComponent(cbEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 3, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHerramientasLayout.createSequentialGroup()
+                .addGroup(pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlHerramientasLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlHerramientasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAutomata, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlHerramientasLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnCortar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPegar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCopiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
 
         jMenu1.setText("Archivo");
 
-        mnbNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        mnbNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbNuevo.setText("Nuevo");
         mnbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,7 +356,7 @@ public class frmNotepad extends javax.swing.JFrame {
         });
         jMenu1.add(mnbNuevo);
 
-        mnbAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        mnbAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbAbrir.setText("Abrir");
         mnbAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -371,7 +365,7 @@ public class frmNotepad extends javax.swing.JFrame {
         });
         jMenu1.add(mnbAbrir);
 
-        mnbGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        mnbGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbGuardar.setText("Guardar");
         mnbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,16 +386,16 @@ public class frmNotepad extends javax.swing.JFrame {
 
         jMenu2.setText("Edición");
 
-        mnDeshacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+        mnDeshacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnDeshacer.setText("Deshacer");
         jMenu2.add(mnDeshacer);
 
-        mnRehacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+        mnRehacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnRehacer.setText("Rehacer");
         jMenu2.add(mnRehacer);
         jMenu2.add(jSeparator1);
 
-        mnbCortar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        mnbCortar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbCortar.setText("Cortar");
         mnbCortar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -410,7 +404,7 @@ public class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnbCortar);
 
-        mnbCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        mnbCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbCopiar.setText("Copiar");
         mnbCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -419,7 +413,7 @@ public class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnbCopiar);
 
-        mnbPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        mnbPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbPegar.setText("Pegar");
         mnbPegar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -429,7 +423,7 @@ public class frmNotepad extends javax.swing.JFrame {
         jMenu2.add(mnbPegar);
         jMenu2.add(jSeparator2);
 
-        mnBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        mnBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnBuscar.setText("Buscar");
         mnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -438,7 +432,7 @@ public class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnBuscar);
 
-        mnbReeplazar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        mnbReeplazar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbReeplazar.setText("Reemplazar...");
         mnbReeplazar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -447,7 +441,7 @@ public class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnbReeplazar);
 
-        mnbIrA.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        mnbIrA.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbIrA.setText("Ir a...");
         mnbIrA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -457,7 +451,7 @@ public class frmNotepad extends javax.swing.JFrame {
         jMenu2.add(mnbIrA);
         jMenu2.add(jSeparator4);
 
-        mnbSelecAll.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        mnbSelecAll.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbSelecAll.setText("Seleccionar Todo");
         mnbSelecAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -508,7 +502,7 @@ public class frmNotepad extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 491, Short.MAX_VALUE)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblBarraEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -519,8 +513,8 @@ public class frmNotepad extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlHerramientas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSeparator3)
                     .addComponent(lblBarraEstado)))
@@ -528,37 +522,6 @@ public class frmNotepad extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
-        if (estado == true) {
-            int rpta = JOptionPane.showConfirmDialog(this, "Desea guardar los cambios hechos en el documento", "Confirmar", 0);
-            if (rpta == 0) {
-                guardar();
-            } else {
-                estado = true;
-            }
-        } else {
-            txaSalida.setText("");
-            this.setTitle(": " + titulo);
-            estado = false;
-        }
-    }//GEN-LAST:event_btnNuevoActionPerformed
-
-    private void cbFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFuenteActionPerformed
-        // TODO add your handling code here:
-        darFormato();
-    }//GEN-LAST:event_cbFuenteActionPerformed
-
-    private void cbEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstiloActionPerformed
-        // TODO add your handling code here:
-        darFormato();
-    }//GEN-LAST:event_cbEstiloActionPerformed
-
-    private void cbTamañoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTamañoActionPerformed
-        // TODO add your handling code here:
-        darFormato();
-    }//GEN-LAST:event_cbTamañoActionPerformed
 
     private void mnbGuardarComoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnbGuardarComoActionPerformed
         // TODO add your handling code here:
@@ -588,12 +551,6 @@ public class frmNotepad extends javax.swing.JFrame {
             estado = false;
         }
     }//GEN-LAST:event_mnbAbrirActionPerformed
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        guardar();
-        estado = false;
-        longitud = txaSalida.getText().length();
-    }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void mnbFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnbFuenteActionPerformed
         // TODO add your handling code here:
@@ -634,27 +591,6 @@ public class frmNotepad extends javax.swing.JFrame {
         b.setLocationRelativeTo(null);
         b.setVisible(true);
     }//GEN-LAST:event_mnBuscarActionPerformed
-
-    private void btnCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCopiarActionPerformed
-        // TODO add your handling code here:
-        txaSalida.copy();
-        deshabilitar();
-        txaSalida.requestFocus();
-    }//GEN-LAST:event_btnCopiarActionPerformed
-
-    private void btnPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPegarActionPerformed
-        // TODO add your handling code here:
-        txaSalida.paste();
-        deshabilitar();
-        txaSalida.requestFocus();
-    }//GEN-LAST:event_btnPegarActionPerformed
-
-    private void btnCortarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCortarActionPerformed
-        // TODO add your handling code here:
-        txaSalida.cut();
-        deshabilitar();
-        txaSalida.requestFocus();
-    }//GEN-LAST:event_btnCortarActionPerformed
 
     private void mnbCortarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnbCortarActionPerformed
         // TODO add your handling code here:
@@ -744,28 +680,6 @@ public class frmNotepad extends javax.swing.JFrame {
         longitud = txaSalida.getText().length();
     }//GEN-LAST:event_mnbGuardarActionPerformed
 
-    private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
-        // TODO add your handling code here:
-        if (estado == true) {
-            int rpta = JOptionPane.showConfirmDialog(this, "Desea guardar los cambios hechos en el documento", "Confirmar", 0);
-            if (rpta == 0) {
-                guardar();
-            } else {
-                abrir();
-                this.setTitle(": " + titulo);
-                longitud = txaSalida.getText().length();
-                System.out.println("Lineas : " + row);
-                estado = false;
-            }
-        } else {
-            abrir();
-            this.setTitle(file.getName(fichero)+" : " + titulo);
-            longitud = txaSalida.getText().length();
-            System.out.println("Lineas : " + row);
-            estado = false;
-        }
-    }//GEN-LAST:event_btnAbrirActionPerformed
-
     private void mnbHerramientasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnbHerramientasActionPerformed
         // TODO add your handling code here:
         String herramientas = mnbHerramientas.getText();
@@ -815,13 +729,85 @@ public class frmNotepad extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mbnAlinearActionPerformed
 
+    private void btnPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPegarActionPerformed
+        // TODO add your handling code here:
+        txaSalida.paste();
+        deshabilitar();
+        txaSalida.requestFocus();
+    }//GEN-LAST:event_btnPegarActionPerformed
+
+    private void btnCortarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCortarActionPerformed
+        // TODO add your handling code here:
+        txaSalida.cut();
+        deshabilitar();
+        txaSalida.requestFocus();
+    }//GEN-LAST:event_btnCortarActionPerformed
+
+    private void btnCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCopiarActionPerformed
+        // TODO add your handling code here:
+        txaSalida.copy();
+        deshabilitar();
+        txaSalida.requestFocus();
+    }//GEN-LAST:event_btnCopiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        guardar();
+        estado = false;
+        longitud = txaSalida.getText().length();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
+        // TODO add your handling code here:
+        if (estado == true) {
+            int rpta = JOptionPane.showConfirmDialog(this, "Desea guardar los cambios hechos en el documento", "Confirmar", 0);
+            if (rpta == 0) {
+                guardar();
+            } else {
+                abrir();
+                this.setTitle(": " + titulo);
+                longitud = txaSalida.getText().length();
+                System.out.println("Lineas : " + row);
+                estado = false;
+            }
+        } else {
+            abrir();
+            this.setTitle(file.getName(fichero)+" : " + titulo);
+            longitud = txaSalida.getText().length();
+            System.out.println("Lineas : " + row);
+            estado = false;
+        }
+    }//GEN-LAST:event_btnAbrirActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+        if (estado == true) {
+            int rpta = JOptionPane.showConfirmDialog(this, "Desea guardar los cambios hechos en el documento", "Confirmar", 0);
+            if (rpta == 0) {
+                guardar();
+            } else {
+                estado = true;
+            }
+        } else {
+            txaSalida.setText("");
+            this.setTitle(": " + titulo);
+            estado = false;
+        }
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnAutomataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomataActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        automata auto = new automata();
+        auto.setVisible(true);
+    }//GEN-LAST:event_btnAutomataActionPerformed
+
     /*Funciones*/
     public void guardar() {
         try {
             FileWriter fos = new FileWriter(ruta);
             PrintWriter out = new PrintWriter(fos);
             if (out != null) {
-                out.println(txaSalida.getText());
+                out.println(txaSalida.getText()+".txt");
                 out.close();
             }
         } catch (IOException e) {
@@ -840,7 +826,7 @@ public class frmNotepad extends javax.swing.JFrame {
                 FileWriter fw = new FileWriter(s);
                 BufferedWriter bw = new BufferedWriter(fw);
                 if (txaSalida.getText().length() > 0) {
-                    fw.write(txaSalida.getText());
+                    fw.write((txaSalida.getText()+".txt"));
                     ruta = String.valueOf(s);
                 }
                 fw.close();
@@ -873,15 +859,8 @@ public class frmNotepad extends javax.swing.JFrame {
     }
     /*------------------------*/
 
-    /*Formato a fuente*/
-    public void darFormato() {
-        String fuente = Estilo.leeFuente1(cbFuente);
-        int estilo = Estilo.leeEstilo1(cbEstilo);
-        int tamaño = Estilo.leeTamaño1(cbTamaño);
-        Font miFuente = new Font(fuente, estilo, tamaño);
-        txaSalida.setFont(miFuente);
-    }
-    /*-----------------*/
+    
+  
 
     /*Deshabilitar Botones*/
     void deshabilitar() {
@@ -919,7 +898,7 @@ public class frmNotepad extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"No se pudo cargo icono");
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -958,16 +937,13 @@ public class frmNotepad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrir;
+    private javax.swing.JButton btnAutomata;
     private javax.swing.JButton btnCopiar;
     private javax.swing.JButton btnCortar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnPegar;
-    private javax.swing.JComboBox cbEstilo;
-    private javax.swing.JComboBox cbFuente;
-    private javax.swing.JComboBox cbTamaño;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -981,7 +957,6 @@ public class frmNotepad extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JLabel lblBarraEstado;
-    private javax.swing.JLabel lblFuente;
     private javax.swing.JMenuItem mbnAlinear;
     private javax.swing.JMenuItem mbnCopiar;
     private javax.swing.JMenuItem mbnCortar;
