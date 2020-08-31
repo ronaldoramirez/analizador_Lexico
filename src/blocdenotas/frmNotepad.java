@@ -796,9 +796,7 @@ public final class frmNotepad extends javax.swing.JFrame {
 
     private void btnAutomataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomataActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        automata auto = new automata();
-        auto.setVisible(true);
+        automata.ejecutar(txaSalida);
     }//GEN-LAST:event_btnAutomataActionPerformed
 
     /*Funciones*/
