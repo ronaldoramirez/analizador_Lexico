@@ -116,7 +116,7 @@ public class automata extends javax.swing.JFrame {
 
     private void btnEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEjecutarActionPerformed
         // TODO add your handling code here:
-        ejecutar(mostrarTexto);
+        mostrarTexto.setText(ejecutar(txtAutomata.getText(), 1));
     }//GEN-LAST:event_btnEjecutarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -125,140 +125,120 @@ public class automata extends javax.swing.JFrame {
         mostrarTexto.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public static void ejecutar(JTextArea mostrar) {
-
-        int estado = 1, bandera = 0, subBandera = 0;
-        String cadena = "", text = "";
-        for (int i = 0; i < mostrar.getLineCount(); i++) {
-            while (!Character.toString(mostrar.getText().charAt(bandera)).equalsIgnoreCase("\n")) {
-                cadena = cadena.concat(Character.toString(mostrar.getText().charAt(bandera)));
-                bandera++;
-                System.out.println("Bandera = " + bandera);
-            }
-            subBandera =0 ;
-            do {
-                    String subcadena = cadena.substring(subBandera, subBandera + 1);
-                    switch (estado) {
-                        case 1: {
-                            if (Character.isDigit(cadena.charAt(subBandera))) {
-                                estado = 2;
-                                //text = imprimirDigito(estado, cadena,text, bandera);
-
-                            } else {
-                                text = error(text, i);
-                                break;
-                            }
-                        }
-                        break;
-
-                        case 2: {
-                            if (Character.isDigit(cadena.charAt(subBandera))) {
-                                estado = 2;
-                                //text = imprimirDigito(estado, cadena, text, bandera);
-                            } else if (subcadena.equalsIgnoreCase(".")) {
-                                estado = 3;
-                                //text = imprimirCaracter(estado, cadena, text, bandera);
-                            } else if (cadena.substring(subBandera, subBandera + 1).equalsIgnoreCase("E")) {
-                                estado = 5;
-                                //text = imprimirCaracter(estado, cadena, text, bandera);
-                            } else {
-                                text = error(text, i);
-                                break;
-
-                            }
-
-                        }
-                        break;
-
-                        case 3: {
-                            if (Character.isDigit(cadena.charAt(subBandera))) {
-                                estado = 4;
-                                //text = imprimirDigito(estado, cadena,text, bandera);
-                            } else {
-                                text = error(text, i);
-                                break;
-
-                            }
-                        }
-                        break;
-
-                        case 4: {
-                            if (Character.isDigit(cadena.charAt(subBandera))) {
-                                estado = 4;
-                                //text = imprimirDigito(estado, cadena, text, bandera);
-                            } else if (subcadena.equalsIgnoreCase("E")) {
-                                estado = 5;
-                                //text = imprimirCaracter(estado, cadena, text, bandera);
-                            } else {
-                                text = error(text, i);
-                                break;
-                            }
-                        }
-                        break;
-
-                        case 5: {
-                            if (Character.isDigit(cadena.charAt(subBandera))) {
-                                estado = 7;
-                                //text = imprimirDigito(estado, cadena, text, bandera);
-                            } else if ((subcadena.equalsIgnoreCase("+")) || (subcadena.equalsIgnoreCase("-"))) { // || 
-                                estado = 6;
-                                //imprimirCaracter(estado, cadena, text, bandera);
-                            } else {
-                                text = error(text, i);
-                                break;
-                            }
-                        }
-                        break;
-
-                        case 6: {
-                            if (Character.isDigit(cadena.charAt(subBandera))) {
-                                estado = 7;
-                                //text = imprimirDigito(estado, cadena,text, bandera);
-                            } else {
-                                text = error(text, i);
-                                break;
-                            }
-                        }
-                        break;
-
-                        case 7: {
-                            if (Character.isDigit(cadena.charAt(subBandera))) {
-                                estado = 7;
-                                //text = imprimirDigito(estado, cadena, text, bandera);
-                            } else {
-                                text = error(text, i);
-                                break;
-                            }
-                        }
-                        break;
-
-                        default:
-                            text = error(text, i);
-                            break;
+    public static String ejecutar(String cadena, int linea) {
+        int estado = 1, bandera = 0;
+        String text = "";
+        do {
+            String subcadena = cadena.substring(bandera, bandera + 1);
+            switch (estado) {
+                case 1: {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
+                        estado = 2;
+                    } else {
+                        text = error(text);
                     }
-                    subBandera++;
-                    /*
-                    String cadenaValidar;
-                    cadenaValidar = text.substring(text.length()-17, text.length());
-                    if (cadenaValidar.equalsIgnoreCase("intente de nuevo\n")){
-                        break;
-                    }*/
-                    System.out.println("SubBandera = " + subBandera);
-                } while (subBandera < cadena.length());
+                }
+                break;
+
+                case 2: {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
+                        estado = 2;
+                    } else if (subcadena.equalsIgnoreCase(".")) {
+                        estado = 3;
+                    } else if (cadena.substring(bandera, bandera + 1).equalsIgnoreCase("E")) {
+                        estado = 5;
+                    } else {
+                        text = error(text);
+                    }
+                }
+                break;
+
+                case 3: {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
+                        estado = 4;
+                    } else {
+                        text = error(text);
+                    }
+                }
+                break;
+
+                case 4: {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
+                        estado = 4;
+                    } else if (subcadena.equalsIgnoreCase("E")) {
+                        estado = 5;
+                    } else {
+                        text = error(text);
+                    }
+                }
+                break;
+
+                case 5: {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
+                        estado = 7;
+                    } else if ((subcadena.equalsIgnoreCase("+")) || (subcadena.equalsIgnoreCase("-"))) { // || 
+                        estado = 6;
+                    } else {
+                        text = error(text);
+                    }
+                }
+                break;
+
+                case 6: {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
+                        estado = 7;
+                    } else {
+                        text = error(text);
+                    }
+                }
+                break;
+
+                case 7: {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
+                        estado = 7;
+                    } else {
+                        text = error(text);
+                    }
+                }
+                break;
+
+                default:
+                    text = error(text);
+                    break;
+            }
+            bandera++;
+
+            if (text.equalsIgnoreCase("Error, en la cadena ingresada\n")) {
+                break;
+            }
+        } while (bandera < cadena.length());
+        if (text.equalsIgnoreCase("Error, en la cadena ingresada\n")) {
+            cadena = text;
+            cadena = cadena.replace("\n", " en la linea #" + linea + ".\n");
+
+        } else {
+            cadena = cadena.concat("\n");
         }
 
-        /*while(bandera < mostrar.getLineCount()){
-            
-            bandera++;
-        }*/
-        mostrar.setText(mostrar.getText());
+        return cadena;
     }
 
-    public static String error(String texto, int contador) {
-
-        texto += "Error, en la linea " + contador + "\n";
+    public static String error(String texto) {
+        texto += "Error, en la cadena ingresada\n";
         return texto;
     }
+
+    public static String imprimirDigito(int estado, String cadena, String texto, int bandera) {
+        texto += "El estado es: " + estado + ". Del digito: " + cadena.charAt(bandera) + "\n";
+        return texto;
+
+    }
+
+    public static String imprimirCaracter(int estado, String cadena, String texto, int bandera) {
+        texto += "El estado es: " + estado + ". Del Caracter: " + cadena.charAt(bandera) + "\n";
+        return texto;
+    }
+
 
     /*
     public static String imprimirDigito(int estado, String cadena, String texto, int bandera){
@@ -286,16 +266,24 @@ public class automata extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(automata.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(automata.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(automata.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(automata.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(automata.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(automata.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(automata.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(automata.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

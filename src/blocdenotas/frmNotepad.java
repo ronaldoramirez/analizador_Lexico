@@ -36,8 +36,7 @@ public final class frmNotepad extends javax.swing.JFrame {
     int longitud;
     int row;
     boolean estado = false;
-    
-    
+
     static BufferedReader reader = null;
     static JFileChooser file = new JFileChooser();
     static File fichero;
@@ -52,7 +51,7 @@ public final class frmNotepad extends javax.swing.JFrame {
     public frmNotepad() {
         initComponents();
         cargarIcono();
-       
+
         longitud = 0;
         txaSalida.requestFocus();
         this.setTitle("Automatas  : " + titulo);
@@ -67,11 +66,11 @@ public final class frmNotepad extends javax.swing.JFrame {
         txaSalida.getDocument().addUndoableEditListener(
                 new UndoableEditListener() {
 
-                    @Override
-                    public void undoableEditHappened(UndoableEditEvent e) {
-                        undoManager.addEdit(e.getEdit());
-                    }
-                }
+            @Override
+            public void undoableEditHappened(UndoableEditEvent e) {
+                undoManager.addEdit(e.getEdit());
+            }
+        }
         );
 
         //Metodos para deshacer Ctrl + Z
@@ -545,7 +544,7 @@ public final class frmNotepad extends javax.swing.JFrame {
             }
         } else {
             abrir();
-            this.setTitle(file.getName(fichero)+" : " + titulo);
+            this.setTitle(file.getName(fichero) + " : " + titulo);
             longitud = txaSalida.getText().length();
             System.out.println("Lineas : " + row);
             estado = false;
@@ -771,7 +770,7 @@ public final class frmNotepad extends javax.swing.JFrame {
             }
         } else {
             abrir();
-            this.setTitle(file.getName(fichero)+" : " + titulo);
+            this.setTitle(file.getName(fichero) + " : " + titulo);
             longitud = txaSalida.getText().length();
             System.out.println("Lineas : " + row);
             estado = false;
@@ -796,7 +795,31 @@ public final class frmNotepad extends javax.swing.JFrame {
 
     private void btnAutomataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomataActionPerformed
         // TODO add your handling code here:
-        automata.ejecutar(txaSalida);
+        if (!txaSalida.getText().equalsIgnoreCase("")) {
+            int indicador = 0;
+            String cadena = txaSalida.getText(), nuevaCadena = "";
+            for (int i = 0; i < txaSalida.getLineCount(); i++) {
+                String SubCadena = "";
+                do {
+                    SubCadena = SubCadena.concat(Character.toString(cadena.charAt(indicador)));
+                    if (indicador == cadena.length() - 1) {
+                        break;
+                    }
+                    indicador++;
+                } while (cadena.charAt(indicador) != '\n');
+
+                if (indicador < cadena.length()) {
+                    indicador++;
+                }
+
+                nuevaCadena = nuevaCadena.concat(automata.ejecutar(SubCadena, (i + 1)));
+            }
+            txaSalida.setText(nuevaCadena);
+            System.out.println("Ciclos terminados Exitosamente");
+        }
+        {
+            System.out.println("No hay caracteres que analizar");
+        }
     }//GEN-LAST:event_btnAutomataActionPerformed
 
     /*Funciones*/
@@ -805,7 +828,7 @@ public final class frmNotepad extends javax.swing.JFrame {
             FileWriter fos = new FileWriter(ruta);
             PrintWriter out = new PrintWriter(fos);
             if (out != null) {
-                out.println(txaSalida.getText()+".txt");
+                out.println(txaSalida.getText() + ".txt");
                 out.close();
             }
         } catch (IOException e) {
@@ -824,7 +847,7 @@ public final class frmNotepad extends javax.swing.JFrame {
                 FileWriter fw = new FileWriter(s);
                 BufferedWriter bw = new BufferedWriter(fw);
                 if (txaSalida.getText().length() > 0) {
-                    fw.write((txaSalida.getText()+".txt"));
+                    fw.write((txaSalida.getText() + ".txt"));
                     ruta = String.valueOf(s);
                 }
                 fw.close();
@@ -855,12 +878,10 @@ public final class frmNotepad extends javax.swing.JFrame {
             }
         }
     }
+
     /*------------------------*/
 
-    
-  
-
-    /*Deshabilitar Botones*/
+ /*Deshabilitar Botones*/
     void deshabilitar() {
         if (txaSalida.getText().trim().length() == 0) {
             mnBuscar.setEnabled(false);
@@ -883,9 +904,10 @@ public final class frmNotepad extends javax.swing.JFrame {
             mnDeshacer.setEnabled(true);
         }
     }
+
     /*----------------------*/
 
-    /*------Cargar Icono---------*/
+ /*------Cargar Icono---------*/
     void cargarIcono() {
         try {
             java.awt.Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconos/Notepad.png"));
@@ -893,7 +915,7 @@ public final class frmNotepad extends javax.swing.JFrame {
             setVisible(true);
             this.setLocationRelativeTo(null);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"No se pudo cargo icono");
+            JOptionPane.showMessageDialog(this, "No se pudo cargo icono");
         }
     }
 
