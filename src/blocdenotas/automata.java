@@ -1,9 +1,5 @@
 package blocdenotas;
 
-import java.io.FileReader;
-import java.util.Scanner;
-import javax.swing.JTextArea;
-
 public class automata extends javax.swing.JFrame {
 
     public automata() {
@@ -212,11 +208,13 @@ public class automata extends javax.swing.JFrame {
                 break;
             }
         } while (bandera < cadena.length());
+        //Si hay error devuelve esta cadena
         if (text.equalsIgnoreCase("Error, en la cadena ingresada\n")) {
             cadena = text;
             cadena = cadena.replace("\n", " en la linea #" + linea + ".\n");
 
-        } else {
+        } else {// De lo contrario devuelve lo que el usuario ingreso en esa linea
+            
             cadena = cadena.concat("\n");
         }
 
