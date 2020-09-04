@@ -63,28 +63,18 @@ public final class frmNotepad extends javax.swing.JFrame {
         estado = false;
 
         //Leer los eventos rehacer y deshacer
-        txaSalida.getDocument().addUndoableEditListener(
-                new UndoableEditListener() {
-
-            @Override
-            public void undoableEditHappened(UndoableEditEvent e) {
-                undoManager.addEdit(e.getEdit());
-            }
-        }
-        );
+        txaSalida.getDocument().addUndoableEditListener((UndoableEditEvent e) -> {
+            undoManager.addEdit(e.getEdit());
+        });
 
         //Metodos para deshacer Ctrl + Z
-        mnDeshacer.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    if (txaSalida.getText().length() != 0) {
-                        undoManager.undo();
-                    }
-                } catch (CannotUndoException cre) {
-                    System.out.println(cre.toString());
+        mnDeshacer.addActionListener((ActionEvent e) -> {
+            try {
+                if (txaSalida.getText().length() != 0) {
+                    undoManager.undo();
                 }
+            } catch (CannotUndoException cre) {
+                System.out.println(cre.toString());
             }
         });
         //----------------------------------------------
