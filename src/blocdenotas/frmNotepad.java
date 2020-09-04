@@ -1,6 +1,7 @@
 package blocdenotas;
 
-import java.awt.Font;
+import funcionesAutomatas.LecturaAutomatas;
+import funcionesAutomatas.Consola;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -60,7 +61,6 @@ public final class frmNotepad extends javax.swing.JFrame {
         deshabilitar();
         pnlHerramientas.setVisible(true);
         estado = false;
-        System.out.println(estado);
 
         //Leer los eventos rehacer y deshacer
         txaSalida.getDocument().addUndoableEditListener(
@@ -825,35 +825,34 @@ public final class frmNotepad extends javax.swing.JFrame {
 
     private void btnAutomataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomataActionPerformed
         // TODO add your handling code here:
-        if (!txaSalida.getText().equalsIgnoreCase("")) {
-            int indicador = 0;
-            String cadena = txaSalida.getText(), nuevaCadena = "";
-            for (int i = 0; i < txaSalida.getLineCount(); i++) {
-                String SubCadena = "";
-                do {
-                    SubCadena = SubCadena.concat(Character.toString(cadena.charAt(indicador)));
-                    if (indicador == cadena.length() - 1) {
-                        break;
-                    }
-                    indicador++;
-                } while (cadena.charAt(indicador) != '\n');
-
-                if (indicador < cadena.length()) {
-                    indicador++;
-                }
-
-                nuevaCadena = nuevaCadena.concat(automata.ejecutar(SubCadena, (i + 1)));
-            }
-            txaSalida.setText(nuevaCadena);
-            System.out.println("Ciclos terminados Exitosamente");
-        }
-        {
-            System.out.println("No hay caracteres que analizar");
+        LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
+        if (!miAutomat.InsertandoAutomata2().equalsIgnoreCase("")) {
+            Consola miConsola = new Consola(miAutomat.InsertandoAutomata2());
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #2");
+            miConsola.show();
+        } else {
+            Consola miConsola = new Consola("No huebieron errores");
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #2");
+            miConsola.show();
         }
     }//GEN-LAST:event_btnAutomataActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
+        if (!miAutomat.InsertandoAutomata1().equalsIgnoreCase("")) {
+            Consola miConsola = new Consola(miAutomat.InsertandoAutomata1());
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #1");
+            miConsola.show();
+        } else {
+            Consola miConsola = new Consola("No huebieron errores");
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #1");
+            miConsola.show();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /*Funciones*/
