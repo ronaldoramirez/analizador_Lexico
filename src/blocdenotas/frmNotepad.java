@@ -337,13 +337,13 @@ public final class frmNotepad extends javax.swing.JFrame {
         pnlHerramientasLayout.setHorizontalGroup(
             pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHerramientasLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAutomata, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addComponent(jButton3)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAutomata, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,7 +383,7 @@ public final class frmNotepad extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        mnbNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        mnbNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbNuevo.setText("Nuevo");
         mnbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,7 +392,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu1.add(mnbNuevo);
 
-        mnbAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        mnbAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbAbrir.setText("Abrir");
         mnbAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,7 +401,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu1.add(mnbAbrir);
 
-        mnbGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        mnbGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbGuardar.setText("Guardar");
         mnbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -422,7 +422,7 @@ public final class frmNotepad extends javax.swing.JFrame {
 
         jMenu2.setText("Edición");
 
-        mnDeshacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+        mnDeshacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnDeshacer.setText("Deshacer");
         mnDeshacer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -431,12 +431,12 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnDeshacer);
 
-        mnRehacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+        mnRehacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnRehacer.setText("Rehacer");
         jMenu2.add(mnRehacer);
         jMenu2.add(jSeparator1);
 
-        mnbCortar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        mnbCortar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbCortar.setText("Cortar");
         mnbCortar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -445,7 +445,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnbCortar);
 
-        mnbCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        mnbCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbCopiar.setText("Copiar");
         mnbCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -454,7 +454,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnbCopiar);
 
-        mnbPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        mnbPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbPegar.setText("Pegar");
         mnbPegar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -464,7 +464,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         jMenu2.add(mnbPegar);
         jMenu2.add(jSeparator2);
 
-        mnBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        mnBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnBuscar.setText("Buscar");
         mnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -473,7 +473,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnBuscar);
 
-        mnbReeplazar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        mnbReeplazar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbReeplazar.setText("Reemplazar...");
         mnbReeplazar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -482,7 +482,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnbReeplazar);
 
-        mnbIrA.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        mnbIrA.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbIrA.setText("Ir a...");
         mnbIrA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,7 +492,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         jMenu2.add(mnbIrA);
         jMenu2.add(jSeparator4);
 
-        mnbSelecAll.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        mnbSelecAll.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnbSelecAll.setText("Seleccionar Todo");
         mnbSelecAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -537,7 +537,7 @@ public final class frmNotepad extends javax.swing.JFrame {
 
         jMenu5.setText("Automatas");
 
-        automata1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_MASK));
+        automata1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         automata1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/computacion-en-la-nube.png"))); // NOI18N
         automata1.setText("AUTOMATA 1");
         automata1.addActionListener(new java.awt.event.ActionListener() {
@@ -547,7 +547,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu5.add(automata1);
 
-        automata2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
+        automata2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         automata2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tecnologia (1).png"))); // NOI18N
         automata2.setText("AUTOMATA 2");
         automata2.addActionListener(new java.awt.event.ActionListener() {
@@ -557,7 +557,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu5.add(automata2);
 
-        automata3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_MASK));
+        automata3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         automata3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/hacker.png"))); // NOI18N
         automata3.setText("AUTOMATA 3");
         automata3.addActionListener(new java.awt.event.ActionListener() {
@@ -567,7 +567,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu5.add(automata3);
 
-        automata4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
+        automata4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         automata4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/internet-security.png"))); // NOI18N
         automata4.setText("AUTOMATA 4");
         automata4.addActionListener(new java.awt.event.ActionListener() {
@@ -1031,12 +1031,12 @@ public final class frmNotepad extends javax.swing.JFrame {
         if (!miAutomat.InsertandoAutomata1().equalsIgnoreCase("")) {
             Consola miConsola = new Consola(miAutomat.InsertandoAutomata1());
             this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #1");
+            miConsola.setTitle("Automata #Variable");
             miConsola.show();
         } else {
             Consola miConsola = new Consola("No huebieron errores");
             this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #1");
+            miConsola.setTitle("Automata #Variable");
             miConsola.show();
         }
     }
@@ -1046,12 +1046,12 @@ public final class frmNotepad extends javax.swing.JFrame {
         if (!miAutomat.InsertandoAutomata2().equalsIgnoreCase("")) {
             Consola miConsola = new Consola(miAutomat.InsertandoAutomata2());
             this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #2");
+            miConsola.setTitle("Automata #Numero Real");
             miConsola.show();
         } else {
             Consola miConsola = new Consola("No huebieron errores");
             this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #2");
+            miConsola.setTitle("Automata #Numero Real ");
             miConsola.show();
         }
     }
@@ -1061,12 +1061,12 @@ public final class frmNotepad extends javax.swing.JFrame {
         if (!miAutomat.InsertandoAutomata3().equalsIgnoreCase("")) {
             Consola miConsola = new Consola(miAutomat.InsertandoAutomata3());
             this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #3");
+            miConsola.setTitle("Automata #EXAMEN");
             miConsola.show();
         } else {
             Consola miConsola = new Consola("No huebieron errores");
             this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #3");
+            miConsola.setTitle("Automata #EXAMEN");
             miConsola.show();
         }
     }
@@ -1076,12 +1076,12 @@ public final class frmNotepad extends javax.swing.JFrame {
         if (!miAutomat.InsertandoAutomata4().equalsIgnoreCase("")) {
             Consola miConsola = new Consola(miAutomat.InsertandoAutomata4());
             this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #Variable");
+            miConsola.setTitle("Automata #Variable y enteros");
             miConsola.show();
         } else {
             Consola miConsola = new Consola("No huebieron errores");
             this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #Variable");
+            miConsola.setTitle("Automata #Variable y enteros");
             miConsola.show();
         }
     }
