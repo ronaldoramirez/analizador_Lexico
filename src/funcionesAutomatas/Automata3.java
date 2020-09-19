@@ -31,10 +31,11 @@ public class Automata3 {
                 break;
 
                 case 3: {
-                    if (Character.isLetter(cadena.charAt(bandera))) {
+                    if (validarEstado3(cadena, bandera, estado)) {
                         estado = 3;
-                   } else if (Character.isDigit(cadena.charAt(bandera))) {
-                        estado = 3;
+                        System.out.println("Verdadero");
+                   } else {
+                        text = error(text);
                         
                     }
                 }
@@ -64,10 +65,9 @@ public class Automata3 {
     
     public static boolean validarEstado3(String cadena, int bandera, int estado){
         
-        if(Character.isLetter(cadena.charAt(bandera)) || Character.isDigit(cadena.charAt(bandera))){
-            estado = 3;
-        }
-        return false;
+        if(bandera == 2){
+            return cadena.charAt(bandera) == '_' || Character.isLetter(cadena.charAt(bandera)) || Character.isDigit(cadena.charAt(bandera));
+        } else return Character.isLetter(cadena.charAt(bandera)) || Character.isDigit(cadena.charAt(bandera));
     }
 }
  
