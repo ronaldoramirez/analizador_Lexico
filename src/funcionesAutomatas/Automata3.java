@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package funcionesAutomatas;
 
 /**
  *
- * @author Ronaldo
+ * @author 1D1EGO
  */
-public class Automata1 {
-
-    public static String ejecutar(String cadena, int linea) {
-
-        // TODO Auto-generated method stub
+public class Automata3 {
+   public static String ejecutar(String cadena, int linea) {
+    
         int estado = 1, bandera = 0;
         String text = "";
         do {
@@ -22,10 +16,9 @@ public class Automata1 {
                 case 1: {
                     if (Character.isLetter(cadena.charAt(bandera))) {
                         estado = 3;
-                        
-                    } else if (Character.isDigit(cadena.charAt(bandera))) {
-                        estado = 2;
-                        
+                 
+                    } else if ((subcadena.equalsIgnoreCase("$")) || (subcadena.equalsIgnoreCase("_"))) { // || 
+                        estado = 3;  
                     } else {
                         text = error(text);
                     }
@@ -33,6 +26,7 @@ public class Automata1 {
                 break;
 
                 case 2: {
+                    
                     text = error(text);
                 }
                 break;
@@ -40,11 +34,11 @@ public class Automata1 {
                 case 3: {
                     if (Character.isLetter(cadena.charAt(bandera))) {
                         estado = 3;
+                   } else if (cadena.substring(bandera, bandera + 1).equalsIgnoreCase("_")) {
+                        estado = 3;     
                         
                     } else if (Character.isDigit(cadena.charAt(bandera))) {
                         estado = 3;
-                    } else {
-                        text = error(text);
                         
                     }
                 }
@@ -71,3 +65,5 @@ public class Automata1 {
         System.out.println("Caracter: " + a + "; Estado = " + estado);
     }
 }
+ 
+
