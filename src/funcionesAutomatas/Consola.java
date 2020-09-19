@@ -18,7 +18,7 @@ public class Consola extends javax.swing.JInternalFrame {
     public Consola(String texto) {
         initComponents();
         this.mostrarConsol.setText(texto);
-        this.setBounds(0, 330, 700, 100);
+        this.setBounds(0, 330, 870, 100);
         this.mostrarConsol.setOpaque(false);
     }
 

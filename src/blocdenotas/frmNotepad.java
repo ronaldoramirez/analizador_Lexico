@@ -60,6 +60,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         jSeparator3.setVisible(false);
         deshabilitar();
         pnlHerramientas.setVisible(true);
+        mnbHerramientas.setText("Ocultar Barra de Herramientas");
         estado = false;
 
         //Leer los eventos rehacer y deshacer
@@ -148,6 +149,11 @@ public final class frmNotepad extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         mnbHerramientas = new javax.swing.JMenuItem();
         mnbEstado = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        automata1 = new javax.swing.JMenuItem();
+        automata2 = new javax.swing.JMenuItem();
+        automata3 = new javax.swing.JMenuItem();
+        automata4 = new javax.swing.JMenuItem();
 
         mbnDeshacer.setText("Deshacer");
         menuEmergente.add(mbnDeshacer);
@@ -231,7 +237,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 404, Short.MAX_VALUE)
+            .addGap(0, 443, Short.MAX_VALUE)
             .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE))
         );
@@ -358,36 +364,26 @@ public final class frmNotepad extends javax.swing.JFrame {
         pnlHerramientasLayout.setVerticalGroup(
             pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHerramientasLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHerramientasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlHerramientasLayout.createSequentialGroup()
-                        .addGap(0, 8, Short.MAX_VALUE)
-                        .addGroup(pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnCortar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPegar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCopiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlHerramientasLayout.createSequentialGroup()
-                        .addGroup(pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlHerramientasLayout.createSequentialGroup()
-                                .addGroup(pnlHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAutomata, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAutomata, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAbrir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCopiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCortar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPegar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jMenu1.setText("Archivo");
 
-        mnbNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnbNuevo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         mnbNuevo.setText("Nuevo");
         mnbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,7 +392,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu1.add(mnbNuevo);
 
-        mnbAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnbAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         mnbAbrir.setText("Abrir");
         mnbAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,7 +401,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu1.add(mnbAbrir);
 
-        mnbGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnbGuardar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         mnbGuardar.setText("Guardar");
         mnbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -426,16 +422,21 @@ public final class frmNotepad extends javax.swing.JFrame {
 
         jMenu2.setText("Edición");
 
-        mnDeshacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnDeshacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
         mnDeshacer.setText("Deshacer");
+        mnDeshacer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnDeshacerActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnDeshacer);
 
-        mnRehacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnRehacer.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
         mnRehacer.setText("Rehacer");
         jMenu2.add(mnRehacer);
         jMenu2.add(jSeparator1);
 
-        mnbCortar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnbCortar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         mnbCortar.setText("Cortar");
         mnbCortar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -444,7 +445,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnbCortar);
 
-        mnbCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnbCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         mnbCopiar.setText("Copiar");
         mnbCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -453,7 +454,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnbCopiar);
 
-        mnbPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnbPegar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         mnbPegar.setText("Pegar");
         mnbPegar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -463,7 +464,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         jMenu2.add(mnbPegar);
         jMenu2.add(jSeparator2);
 
-        mnBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         mnBuscar.setText("Buscar");
         mnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -472,7 +473,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnBuscar);
 
-        mnbReeplazar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnbReeplazar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         mnbReeplazar.setText("Reemplazar...");
         mnbReeplazar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -481,7 +482,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         });
         jMenu2.add(mnbReeplazar);
 
-        mnbIrA.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnbIrA.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         mnbIrA.setText("Ir a...");
         mnbIrA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -491,7 +492,7 @@ public final class frmNotepad extends javax.swing.JFrame {
         jMenu2.add(mnbIrA);
         jMenu2.add(jSeparator4);
 
-        mnbSelecAll.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnbSelecAll.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         mnbSelecAll.setText("Seleccionar Todo");
         mnbSelecAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -533,6 +534,50 @@ public final class frmNotepad extends javax.swing.JFrame {
         jMenu4.add(mnbEstado);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Automatas");
+
+        automata1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_MASK));
+        automata1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/computacion-en-la-nube.png"))); // NOI18N
+        automata1.setText("AUTOMATA 1");
+        automata1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                automata1ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(automata1);
+
+        automata2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
+        automata2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tecnologia (1).png"))); // NOI18N
+        automata2.setText("AUTOMATA 2");
+        automata2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                automata2ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(automata2);
+
+        automata3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_MASK));
+        automata3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/hacker.png"))); // NOI18N
+        automata3.setText("AUTOMATA 3");
+        automata3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                automata3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(automata3);
+
+        automata4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
+        automata4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/internet-security.png"))); // NOI18N
+        automata4.setText("AUTOMATA 4");
+        automata4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                automata4ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(automata4);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -841,69 +886,47 @@ public final class frmNotepad extends javax.swing.JFrame {
 
     private void btnAutomataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomataActionPerformed
         // TODO add your handling code here:
-        LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
-        if (!miAutomat.InsertandoAutomata2().equalsIgnoreCase("")) {
-            Consola miConsola = new Consola(miAutomat.InsertandoAutomata2());
-            this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #2");
-            miConsola.show();
-        } else {
-            Consola miConsola = new Consola("No huebieron errores");
-            this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #2");
-            miConsola.show();
-        }
+        ejecutarAutomata2();
     }//GEN-LAST:event_btnAutomataActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
-        if (!miAutomat.InsertandoAutomata1().equalsIgnoreCase("")) {
-            Consola miConsola = new Consola(miAutomat.InsertandoAutomata1());
-            this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #1");
-            miConsola.show();
-        } else {
-            Consola miConsola = new Consola("No huebieron errores");
-            this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #1");
-            miConsola.show();
-        }
+        ejecutarAutomata1();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
-        if (!miAutomat.InsertandoAutomata3().equalsIgnoreCase("")) {
-            Consola miConsola = new Consola(miAutomat.InsertandoAutomata3());
-            this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #3");
-            miConsola.show();
-        } else {
-            Consola miConsola = new Consola("No huebieron errores");
-            this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #3");
-            miConsola.show();
-        }
-        
+        ejecutarAutomata3();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
-        if (!miAutomat.InsertandoAutomata4().equalsIgnoreCase("")) {
-            Consola miConsola = new Consola(miAutomat.InsertandoAutomata4());
-            this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #Variable");
-            miConsola.show();
-        } else {
-            Consola miConsola = new Consola("No huebieron errores");
-            this.escritorio.add(miConsola);
-            miConsola.setTitle("Automata #Variable");
-            miConsola.show();
-        }
-        
+        ejecutarAutomata4();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void automata1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_automata1ActionPerformed
+        // TODO add your handling code here:
+        ejecutarAutomata1();
+    }//GEN-LAST:event_automata1ActionPerformed
+
+    private void automata2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_automata2ActionPerformed
+        // TODO add your handling code here:
+        ejecutarAutomata2();
+    }//GEN-LAST:event_automata2ActionPerformed
+
+    private void automata3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_automata3ActionPerformed
+        // TODO add your handling code here:
+        ejecutarAutomata3();
+    }//GEN-LAST:event_automata3ActionPerformed
+
+    private void automata4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_automata4ActionPerformed
+        // TODO add your handling code here:
+        ejecutarAutomata4();
+    }//GEN-LAST:event_automata4ActionPerformed
+
+    private void mnDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnDeshacerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnDeshacerActionPerformed
 
     /*Funciones*/
     public void guardar() {
@@ -1002,6 +1025,67 @@ public final class frmNotepad extends javax.swing.JFrame {
         }
     }
 
+    /*-------------Automatas a ejecutar-----------*/
+    public void ejecutarAutomata1() {
+        LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
+        if (!miAutomat.InsertandoAutomata1().equalsIgnoreCase("")) {
+            Consola miConsola = new Consola(miAutomat.InsertandoAutomata1());
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #1");
+            miConsola.show();
+        } else {
+            Consola miConsola = new Consola("No huebieron errores");
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #1");
+            miConsola.show();
+        }
+    }
+
+    public void ejecutarAutomata2() {
+        LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
+        if (!miAutomat.InsertandoAutomata2().equalsIgnoreCase("")) {
+            Consola miConsola = new Consola(miAutomat.InsertandoAutomata2());
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #2");
+            miConsola.show();
+        } else {
+            Consola miConsola = new Consola("No huebieron errores");
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #2");
+            miConsola.show();
+        }
+    }
+
+    public void ejecutarAutomata3() {
+        LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
+        if (!miAutomat.InsertandoAutomata3().equalsIgnoreCase("")) {
+            Consola miConsola = new Consola(miAutomat.InsertandoAutomata3());
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #3");
+            miConsola.show();
+        } else {
+            Consola miConsola = new Consola("No huebieron errores");
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #3");
+            miConsola.show();
+        }
+    }
+
+    public void ejecutarAutomata4() {
+        LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
+        if (!miAutomat.InsertandoAutomata4().equalsIgnoreCase("")) {
+            Consola miConsola = new Consola(miAutomat.InsertandoAutomata4());
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #Variable");
+            miConsola.show();
+        } else {
+            Consola miConsola = new Consola("No huebieron errores");
+            this.escritorio.add(miConsola);
+            miConsola.setTitle("Automata #Variable");
+            miConsola.show();
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -1039,6 +1123,10 @@ public final class frmNotepad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem automata1;
+    private javax.swing.JMenuItem automata2;
+    private javax.swing.JMenuItem automata3;
+    private javax.swing.JMenuItem automata4;
     private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnAutomata;
     private javax.swing.JButton btnCopiar;
@@ -1054,6 +1142,7 @@ public final class frmNotepad extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
