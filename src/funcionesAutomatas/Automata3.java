@@ -7,18 +7,17 @@ package funcionesAutomatas;
  */
 public class Automata3 {
    public static String ejecutar(String cadena, int linea) {
-    
+        //añlksdjfañlksdjfñklasdj
+       
         int estado = 1, bandera = 0;
         String text = "";
         do {
             String subcadena = cadena.substring(bandera, bandera + 1); 
             switch (estado) {
                 case 1: {
-                    if (Character.isLetter(cadena.charAt(bandera))) {
+                    if (Character.isLetter(subcadena.charAt(0)) ||(subcadena.equalsIgnoreCase("$"))||(subcadena.equalsIgnoreCase("_"))) {
                         estado = 3;
                  
-                    } else if ((subcadena.equalsIgnoreCase("$")) || (subcadena.equalsIgnoreCase("_"))) { // || 
-                        estado = 3;  
                     } else {
                         text = error(text);
                     }
@@ -34,10 +33,7 @@ public class Automata3 {
                 case 3: {
                     if (Character.isLetter(cadena.charAt(bandera))) {
                         estado = 3;
-                   } else if (cadena.substring(bandera, bandera + 1).equalsIgnoreCase("_")) {
-                        estado = 3;     
-                        
-                    } else if (Character.isDigit(cadena.charAt(bandera))) {
+                   } else if (Character.isDigit(cadena.charAt(bandera))) {
                         estado = 3;
                         
                     }
@@ -53,6 +49,7 @@ public class Automata3 {
         if (text.equalsIgnoreCase("Error, en la cadena ingresada\n")) {
             text = text.replace("\n", " en la linea #" + linea + ".\n");
         }
+        System.out.println("Estado = " + estado);
         return text;
     }
     
@@ -63,6 +60,14 @@ public class Automata3 {
     
     public static void imprime(char a, int estado){
         System.out.println("Caracter: " + a + "; Estado = " + estado);
+    }
+    
+    public static boolean validarEstado3(String cadena, int bandera, int estado){
+        
+        if(Character.isLetter(cadena.charAt(bandera)) || Character.isDigit(cadena.charAt(bandera))){
+            estado = 3;
+        }
+        return false;
     }
 }
  

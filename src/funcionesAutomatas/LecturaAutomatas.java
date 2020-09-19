@@ -66,7 +66,7 @@ public class LecturaAutomatas {
                     if (indicador < cadena.length()) {
                         indicador++;
                     }
-                    nuevaCadena = nuevaCadena.concat(Automata1.ejecutar(SubCadena, (i + 1)));
+                    nuevaCadena = nuevaCadena.concat(Automata3.ejecutar(SubCadena, (i + 1)));
                 } catch (Exception e) {
                     System.out.println("Hola soy la Excepción, No estoy ejecutando nada");
                 }
