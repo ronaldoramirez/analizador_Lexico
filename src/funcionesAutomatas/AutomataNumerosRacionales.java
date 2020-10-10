@@ -1,19 +1,28 @@
 package funcionesAutomatas;
 
-
 public class AutomataNumerosRacionales {
-    
-public static String ejecutar(String cadena, int linea) {
-        int estado = 1, bandera = 0;
+
+    public static String ejecutar(String cadena, int linea) {
+        int estado = 0, bandera = 0;
         String text = "";
         do {
+            // Aqui estamos moviendo el caracter pero lo metemos en una String para utilizar el metodo equalsIgnoreCase("")
             String subcadena = cadena.substring(bandera, bandera + 1);
             switch (estado) {
-                case 1: {
-                    if (Character.isDigit(subcadena.charAt(0))){ 
-                        estado = 2;
-                     } else if ((subcadena.equalsIgnoreCase("+"))||(subcadena.equalsIgnoreCase("-"))){
+                case 0: {
+                    if ((subcadena.equalsIgnoreCase("+")) || (subcadena.equalsIgnoreCase("-"))) {
                         estado = 1;
+                    } else if (Character.isDigit(subcadena.charAt(bandera))) {
+                        estado = 2;
+                    } else {
+                        text = error(text);
+                    }
+                }
+                break;
+
+                case 1: {
+                    if (Character.isDigit(subcadena.charAt(0))) {
+                        estado = 2;
                     } else {
                         text = error(text);
                     }
@@ -21,16 +30,9 @@ public static String ejecutar(String cadena, int linea) {
                 break;
 
                 case 2: {
-                    if (Character.isDigit(subcadena.charAt(1))){ 
+                    if (Character.isDigit(subcadena.charAt(0))) {
                         estado = 2;
-                    } else {
-                        text = error(text);
-                    }
-                }
-                break;
-
-                case 3: {
-                    if (subcadena.equalsIgnoreCase(".")) {
+                    } else if (subcadena.equalsIgnoreCase(".")) {
                         estado = 3;
                     } else {
                         text = error(text);
@@ -38,10 +40,19 @@ public static String ejecutar(String cadena, int linea) {
                 }
                 break;
 
-                case 4: {
-                    if (Character.isDigit(cadena.charAt(bandera))) {
+                case 3: {
+                    if (Character.isDigit(subcadena.charAt(0))) {
                         estado = 4;
-                  
+                    } else {
+                        text = error(text);
+                    }
+                }
+                break;
+
+                case 4: {
+                    if (Character.isDigit(cadena.charAt(0))) {
+                        estado = 4;
+
                     } else {
                         text = error(text);
                     }
@@ -77,9 +88,5 @@ public static String ejecutar(String cadena, int linea) {
         texto += "El estado es: " + estado + ". Del Caracter: " + cadena.charAt(bandera) + "\n";
         return texto;
     }
-     
+
 }
-
-
-     
-

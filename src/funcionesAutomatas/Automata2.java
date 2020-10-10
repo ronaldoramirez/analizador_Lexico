@@ -7,6 +7,7 @@ public class Automata2 {
         int estado = 1, bandera = 0;
         String text = "";
         do {
+            // Aqui estamos moviendo el caracter pero lo metemos en una String para utilizar el metodo equalsIgnoreCase("")
             String subcadena = cadena.substring(bandera, bandera + 1);
             switch (estado) {
                 case 1: {
