@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package funcionesAutomatas;
 
-/**
- *
- * @author Ronaldo
- */
+
 public class Consola extends javax.swing.JInternalFrame {
 
     /**
@@ -18,7 +11,7 @@ public class Consola extends javax.swing.JInternalFrame {
     public Consola(String texto) {
         initComponents();
         this.mostrarConsol.setText(texto);
-        this.setBounds(0, 330, 870, 100);
+        this.setBounds(0, 360, 955, 100);
         this.mostrarConsol.setOpaque(false);
     }
 
@@ -49,7 +42,7 @@ public class Consola extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

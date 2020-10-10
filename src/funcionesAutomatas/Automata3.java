@@ -15,10 +15,13 @@ public class Automata3 {
             String subcadena = cadena.substring(bandera, bandera + 1); 
             switch (estado) {
                 case 1: {
-                    if (Character.isLetter(subcadena.charAt(0)) ||(subcadena.equalsIgnoreCase("$"))||(subcadena.equalsIgnoreCase("_"))) {
-                        estado = 3;
+                    if (Character.isDigit(subcadena.charAt(0))){
+                        estado = 2;
+                        
+                    } else if ((subcadena.equalsIgnoreCase("+"))||(subcadena.equalsIgnoreCase("-"))){
+                        estado = 1;
                  
-                    } else {
+                    }else {
                         text = error(text);
                     }
                 }

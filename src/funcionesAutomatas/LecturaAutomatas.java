@@ -111,7 +111,37 @@ public class LecturaAutomatas {
         }
     }
 
- 
+        public String InsertandoAutomataNumerosRacionales() {
+        if (!txaSalida.getText().equalsIgnoreCase("")) {
+            int indicador = 0;
+            String cadena = txaSalida.getText(), nuevaCadena = "";
+            for (int i = 0; i < txaSalida.getLineCount(); i++) {
+                String SubCadena = "";
+                try {
+                    do {
+                        SubCadena = SubCadena.concat(Character.toString(cadena.charAt(indicador)));
+                        if (indicador == cadena.length() - 1) {
+                            break;
+                        }
+                        indicador++;
+                    } while (cadena.charAt(indicador) != '\n');
+
+                    if (indicador < cadena.length()) {
+                        indicador++;
+                    }
+                    nuevaCadena = nuevaCadena.concat(AutomataNumerosRacionales.ejecutar(SubCadena, (i + 1)));
+                } catch (Exception e) {
+                    System.out.println("No estoy ejecutando nada");
+                }
+            }
+
+            return nuevaCadena;
+        }
+        {
+            System.out.println("No hay caracteres que analizar");
+            return "";
+        }
+    }
     
     
     
