@@ -1,28 +1,19 @@
+
 package funcionesAutomatas;
 
 public class AutomataNumerosRacionales {
-
     public static String ejecutar(String cadena, int linea) {
-        int estado = 0, bandera = 0;
+        int estado = 1, bandera = 0;
         String text = "";
         do {
             // Aqui estamos moviendo el caracter pero lo metemos en una String para utilizar el metodo equalsIgnoreCase("")
             String subcadena = cadena.substring(bandera, bandera + 1);
             switch (estado) {
-                case 0: {
-                    if ((subcadena.equalsIgnoreCase("+")) || (subcadena.equalsIgnoreCase("-"))) {
-                        estado = 1;
-                    } else if (Character.isDigit(subcadena.charAt(bandera))) {
-                        estado = 2;
-                    } else {
-                        text = error(text);
-                    }
-                }
-                break;
-
                 case 1: {
-                    if (Character.isDigit(subcadena.charAt(0))) {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
                         estado = 2;
+                    } else if ((subcadena.equalsIgnoreCase("+")) || (subcadena.equalsIgnoreCase("-"))) { // || 
+                        estado = 1;
                     } else {
                         text = error(text);
                     }
@@ -30,9 +21,19 @@ public class AutomataNumerosRacionales {
                 break;
 
                 case 2: {
-                    if (Character.isDigit(subcadena.charAt(0))) {
-                        estado = 2;
-                    } else if (subcadena.equalsIgnoreCase(".")) {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
+                        estado = 2;                    
+                    } else {
+                        text = error(text);
+                    }
+                }
+                break;
+
+                case 3: {                                               
+                   // if (Character.isDigit(cadena.charAt(bandera))) {
+                     //   estado = 2;
+                    
+                  if (subcadena.equalsIgnoreCase(".")) {
                         estado = 3;
                     } else {
                         text = error(text);
@@ -40,24 +41,18 @@ public class AutomataNumerosRacionales {
                 }
                 break;
 
-                case 3: {
-                    if (Character.isDigit(subcadena.charAt(0))) {
-                        estado = 4;
-                    } else {
-                        text = error(text);
-                    }
-                }
-                break;
-
                 case 4: {
-                    if (Character.isDigit(cadena.charAt(0))) {
+                    if (Character.isDigit(cadena.charAt(bandera))) {
                         estado = 4;
-
                     } else {
                         text = error(text);
                     }
                 }
                 break;
+
+               // default:
+                    //text = error(text);
+                    //break;
             }
             bandera++;
 
@@ -87,6 +82,5 @@ public class AutomataNumerosRacionales {
     public static String imprimirCaracter(int estado, String cadena, String texto, int bandera) {
         texto += "El estado es: " + estado + ". Del Caracter: " + cadena.charAt(bandera) + "\n";
         return texto;
-    }
-
+    }         
 }
