@@ -30,10 +30,9 @@ public class AutomataNumerosRacionales {
                 break;
 
                 case 3: {                                               
-                   // if (Character.isDigit(cadena.charAt(bandera))) {
-                     //   estado = 2;
-                    
-                  if (subcadena.equalsIgnoreCase(".")) {
+                   if (Character.isDigit(cadena.charAt(bandera))) {
+                       estado = 2;                    
+                   }else if (cadena.substring(bandera, bandera + 1).equalsIgnoreCase(".")) {
                         estado = 3;
                     } else {
                         text = error(text);
@@ -50,9 +49,9 @@ public class AutomataNumerosRacionales {
                 }
                 break;
 
-               // default:
-                    //text = error(text);
-                    //break;
+                default:
+                    text = error(text);
+                    break;
             }
             bandera++;
 
