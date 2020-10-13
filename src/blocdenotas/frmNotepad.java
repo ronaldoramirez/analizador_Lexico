@@ -940,7 +940,8 @@ public final class frmNotepad extends javax.swing.JFrame {
     }//GEN-LAST:event_mnDeshacerActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        // Invocando la función en esta misma clase que llama a las dependencias
+        
         ejecutarAutomataNumerosRacionales();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1102,7 +1103,10 @@ public final class frmNotepad extends javax.swing.JFrame {
         }
     }
     public void ejecutarAutomataNumerosRacionales() {
+        //Leyendo el automata
         LecturaAutomatas miAutomat = new LecturaAutomatas(txaSalida);
+        
+        //Validando si el automata viene vacío
         if (!miAutomat.InsertandoAutomataNumerosRacionales().equalsIgnoreCase("")) {
             Consola miConsola = new Consola(miAutomat.InsertandoAutomataNumerosRacionales());
             this.escritorio.add(miConsola);
